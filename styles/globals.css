@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;1,200&display=swap');
+
+html {
+  background-color: whitesmoke;
+}
+
+.main {
+  background-color: whitesmoke;
+}
+
+.body {
+  background-color: whitesmoke;
+}
+
+.hero{
+  position: absolute;
+  width: 1319px;
+  height: 473px;
+  left: 85px;
+  top: 138px;
+  background: linear-gradient(109.52deg, rgba(140, 100, 255, 0.010109) 23.62%, rgba(144, 105, 255, 0) 23.62%, rgba(66, 0, 255, 0.21) 105.39%, rgba(144, 105, 255, 0.21) 111.72%);
+}
