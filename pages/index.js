@@ -12,7 +12,7 @@ export default function Home() {
     <>
     <ul>
       <li>
-        <Link href="/"> <a>Home</a> </Link>
+        <Link href="/">Home </Link>
       </li>
     </ul>
     <Landing />
