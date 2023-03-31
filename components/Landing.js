@@ -5,6 +5,7 @@ import { CgDarkMode } from "react-icons/cg";
 
 
 import "../public/rocket.svg"
+import { signInWithGoogle } from "./Firebase";
 
 const Landing = () => {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -52,7 +53,7 @@ const Landing = () => {
           Login with Twitter
         </Button>
 
-        <Button mt={4} size="md" colorScheme={color} bg={bg} leftIcon={<FaGoogle />}>
+        <Button onClick={signInWithGoogle} mt={4} size="md" colorScheme={color} bg={bg} leftIcon={<FaGoogle />}>
           Login with Google
         </Button>
         </ModalContent>
