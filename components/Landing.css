@@ -82,6 +82,28 @@
     
 }
 
+.inputt {
+    text-align: center;
+    margin-left: 79%;
+    position: relative;
+    width: 20%;
+    top: 500px;
+    margin-top: 210px;
+}
+.featured1 {
+    position: relative;
+    
+    top: 748px;
+    margin-top: 200px;
+    font-family: 'Jost';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 48px;
+    line-height: 69px;
+
+    color: #000000;
+}
+
 .featured{
     position: absolute;
     width: 311px;
@@ -99,11 +121,12 @@
 }
 
 .cards{
-    position: absolute;
+    position: relative;
     margin-top: 300px;
 width: 316px;
 height: 419px;
-left: 60px;
+margin-left: 60px;
+/* left: 60px; */
 top: 882px;
 
 background: #FFFFFF;

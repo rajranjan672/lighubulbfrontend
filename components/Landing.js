@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Flex, Button, Text, useColorMode, Box, Image, Heading, Divider, useDisclosure, Modal, ModalOverlay, ModalContent, useColorModeValue } from "@chakra-ui/react";
 import { FaTwitter, FaGoogle } from "react-icons/fa";
 import { CgDarkMode } from "react-icons/cg";
@@ -6,14 +6,26 @@ import { CgDarkMode } from "react-icons/cg";
 
 import "../public/rocket.svg"
 import { signInWithGoogle } from "./Firebase";
+import axios from "axios";
+import Ideas from "./Ideas";
 
 const Landing = () => {
+  const [ideas, setIdeas] = useState([]);
+  const [ query, setQuery] = useState("")
   const { colorMode, toggleColorMode } = useColorMode();
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const bg = useColorModeValue('red.500', 'red.200')
   const color = useColorModeValue('white', 'gray.800')
 
+  useEffect(() => {
+    getideas()
+  })
+  const getideas = async() => {
+
+  const res = await axios.get(`http://localhost:8080/api/ideas/get-all`);
+        setIdeas(res.data)
+  }
   return (
     <>
     <Flex
@@ -87,38 +99,57 @@ const Landing = () => {
       </div>
       
     </div>
-
+    
     <div className="featured">Featured Ideas</div>
+    
+
+<input className='inputt' type="text"  placeholder='Search ideas' onChange={event => {setQuery(event.target.value)}} />
+
     <Flex>
+      {ideas.filter(idea => {
+        if(query=== '') {
+          return idea;
+        } else if(idea.title.toLowerCase().includes(query.toLowerCase())) {
+          return idea;
+        }
+      }).map((idea) => {
+        return(
+          <div className="cards" key={idea.id} >
+          <span>{idea.title}</span>
+          <p>{idea.description}</p>
+          <div className="build-btn">Build</div>
+          <div className="vouch-btn">Vouch</div>
+    
+        </div>
+      )})}
+    {/* // <div className="cards">
+    //   <span>A plarform for token gated scheduled booking.</span>
+    //   <p>Admittedly, it is a surrogate experience, but so are love stories and travel novels. It is artificial, but not vulgar. And more importantly, it substantially changes Read more</p>
+    //   <div className="build-btn">Build</div>
+    //   <div className="vouch-btn">Vouch</div>
 
-    <div className="cards">
-      <span>A plarform for token gated scheduled booking.</span>
-      <p>Admittedly, it is a surrogate experience, but so are love stories and travel novels. It is artificial, but not vulgar. And more importantly, it substantially changes Read more</p>
-      <div className="build-btn">Build</div>
-      <div className="vouch-btn">Vouch</div>
+    // </div>
+    // <div className="cards2">
+    // <span>A plarform for token gated scheduled booking.</span>
+    //   <p>Admittedly, it is a surrogate experience, but so are love stories and travel novels. It is artificial, but not vulgar. And more importantly, it substantially changes Read more</p>
+    //   <div className="build-btn">Build</div>
+    //   <div className="vouch-btn">Vouch</div>
 
-    </div>
-    <div className="cards2">
-    <span>A plarform for token gated scheduled booking.</span>
-      <p>Admittedly, it is a surrogate experience, but so are love stories and travel novels. It is artificial, but not vulgar. And more importantly, it substantially changes Read more</p>
-      <div className="build-btn">Build</div>
-      <div className="vouch-btn">Vouch</div>
+    // </div>
+    // <div className="cards3">
+    // <span>A plarform for token gated scheduled booking.</span>
+    //   <p>Admittedly, it is a surrogate experience, but so are love stories and travel novels. It is artificial, but not vulgar. And more importantly, it substantially changes Read more</p>
+    //   <div className="build-btn">Build</div>
+    //   <div className="vouch-btn">Vouch</div>
 
-    </div>
-    <div className="cards3">
-    <span>A plarform for token gated scheduled booking.</span>
-      <p>Admittedly, it is a surrogate experience, but so are love stories and travel novels. It is artificial, but not vulgar. And more importantly, it substantially changes Read more</p>
-      <div className="build-btn">Build</div>
-      <div className="vouch-btn">Vouch</div>
+    // </div>
+    // <div className="cards4">
+    // <span>A plarform for token gated scheduled booking.</span>
+    //   <p>Admittedly, it is a surrogate experience, but so are love stories and travel novels. It is artificial, but not vulgar. And more importantly, it substantially changes Read more</p>
+    //   <div className="build-btn"> <span className="btn-text-1">Build</span> </div>
+    //   <div className="vouch-btn">Vouch</div>
 
-    </div>
-    <div className="cards4">
-    <span>A plarform for token gated scheduled booking.</span>
-      <p>Admittedly, it is a surrogate experience, but so are love stories and travel novels. It is artificial, but not vulgar. And more importantly, it substantially changes Read more</p>
-      <div className="build-btn"> <span className="btn-text-1">Build</span> </div>
-      <div className="vouch-btn">Vouch</div>
-
-    </div>
+    // </div>
     </Flex>
 
     <div className="explore-ideas">Explore Ideas</div>
@@ -143,7 +174,7 @@ const Landing = () => {
     <div className="explore-cards5">
     <span>A plarform for token gated scheduled booking.</span>
       <p>Admittedly, it is a surrogate experience, but so are love stories and travel novels. It is artificial, but not vulgar. And more importantly, it substantially changes Read more</p>
-    </div>
+    </div> */}
     </Flex>
 
     

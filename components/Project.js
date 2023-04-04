@@ -5,8 +5,8 @@ import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
 import Data from "../components/sampleData";
-import Card from "../components/newCard";
-import "../styles.css";
+ import Card from "../components/newCard";
+// import "../styles.css";
 
 export default function Project() {
   const [value, setValue] = React.useState("1");

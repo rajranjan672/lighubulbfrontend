@@ -1,6 +1,6 @@
-import Profile from "./components/profile";
-import Project from "./components/Project";
-import Card from "./components/newCard";
+import Project from "../components/Project";
+// import Card from "./components/newCard";
+import Profile from "../components/Profile";
 
 export default function App() {
   Username = "FoxyRoxy";
